@@ -1,6 +1,18 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
+const sonidoFondo = new Audio('sounds/nivel1.mp3');
+
+sonidoFondo.loop = true;
+
+sonidoFondo.volume = 0.5; 
+
+document.addEventListener('click', () => {
+    if (sonidoFondo.paused) {
+        sonidoFondo.play().catch(e => console.log("Error al reproducir audio:", e));
+    }
+}, { once: true });
+
 const enemigo = {
     x: 50,
     y: 50,
